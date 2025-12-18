@@ -61,30 +61,6 @@ machine_learning_breast_cancer_detection/
 ├── requirements.txt # Python packages
 ├── README.md # This file
 └── .gitignore # Ignore temporary/cache files
-machine_learning_breast_cancer_detection/
-│
-├── data/ # Raw and processed datasets
-│ ├── raw/
-│ └── processed/
-│
-├── notebooks/ # Jupyter notebooks
-│ ├── 1_data_preprocessing.ipynb
-│ ├── 2_model_GRU_SVM.ipynb
-│ ├── 3_model_MLP.ipynb
-│ ├── 4_model_LinearRegression.ipynb
-│ ├── 5_model_SVM.ipynb
-│ ├── 6_model_SoftmaxRegression.ipynb
-│ └── 7_model_L1_L2_NN.ipynb
-│
-├── scripts/ # Python scripts for reproducibility
-│ ├── data_preprocessing.py
-│ ├── train_models.py
-│ └── utils.py
-│
-├── app.py # Optional deployment interface
-├── requirements.txt # Python packages
-├── README.md # This file
-└── .gitignore # Ignore temporary/cache files
 
 ---
 

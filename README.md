@@ -71,15 +71,15 @@ Below are some plots comparing model accuracy, ROC curves, and confusion matrice
 
 #### 🔹 Accuracy vs Loss
 
-![Accuracy vs Loss](results/plots/accuracy_vs_loss.png)
+![Accuracy vs Loss](https://github.com/rayen-feb/machine_learning_breast_cancer_detection/raw/main/results/plots/accuracy_vs_loss.png)
 
 #### 🔹 Confusion Matrix
 
-![Confusion Matrix](results/plots/confusion_matrix.png)
+![Confusion Matrix](https://github.com/rayen-feb/machine_learning_breast_cancer_detection/raw/main/results/plots/confusion_matrix.png)
 
 #### 🔹 ROC Curves
 
-![ROC Curve](results/plots/roc_curve.png)
+![ROC Curve](https://github.com/rayen-feb/machine_learning_breast_cancer_detection/raw/main/results/plots/roc_curve.png)
 
 These visualizations provide insight into model effectiveness and help compare performance across methods like Logistic Regression, SVM, and Neural Networks.
 

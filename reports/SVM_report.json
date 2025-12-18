@@ -1,0 +1,17 @@
+{
+    "model": "SVM",
+    "metrics": {
+        "accuracy": 0.9766081871345029,
+        "FPR": 0.03125,
+        "FNR": 0.018691588785046728,
+        "TPR": 0.9813084112149533,
+        "TNR": 0.96875
+    },
+    "hyperparameters": {
+        "kernel": "rbf",
+        "C": 5,
+        "norm": "L2"
+    },
+    "epochs": 3000,
+    "datapoints": 384000
+}

@@ -1,0 +1,16 @@
+{
+    "model": "L1_NN",
+    "metrics": {
+        "accuracy": 0.9590643274853801,
+        "FPR": 0.03125,
+        "FNR": 0.04672897196261682,
+        "TPR": 0.9532710280373832,
+        "TNR": 0.96875
+    },
+    "hyperparameters": {
+        "k": 1,
+        "distance": "manhattan"
+    },
+    "epochs": 1,
+    "datapoints": 398
+}

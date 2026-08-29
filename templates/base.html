@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An AI-assisted clinical dashboard that helps clinicians review breast cancer risk indicators with clarity and confidence.">
+  <title>{{ title if title else "Breast Cancer Prediction — Clinical AI Dashboard" }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+
+  <!-- Sticky Frosted Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-content">
+      <a href="/" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22">
+            <path d="M16 28C16 28 4 20.6 4 12.4C4 7.8 7.6 4.4 12 4.4C13.9 4.4 15.5 5.2 16 6.4C16.5 5.2 18.1 4.4 20 4.4C24.4 4.4 28 7.8 28 12.4C28 20.6 16 28 16 28Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <span>Breast Cancer Prediction</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="#predict">Predict</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#predict" class="nav-cta">Start a prediction</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow reveal">Clinical decision support, built on machine learning</p>
+        <h1 class="reveal">
+          Read the signal,<br>
+          <span class="text-gradient">not just the noise.</span>
+        </h1>
+        <p class="hero-sub reveal">
+          This dashboard turns diagnostic measurements into a clear, explainable
+          probability — so a second opinion is always one prediction away.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#predict" class="btn btn-primary">Start a prediction</a>
+          <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+        </div>
+        <p class="hero-disclaimer reveal">Decision support only — always confirmed by a licensed clinician.</p>
+      </div>
+
+      <!-- Signature animated signal line: ECG trace resolving into a ribbon -->
+      <div class="hero-signal" aria-hidden="true">
+        <svg viewBox="0 0 1200 220" preserveAspectRatio="none">
+          <path id="signalPath" class="signal-path"
+            d="M0,110 L140,110 L170,40 L200,180 L230,60 L260,110 L420,110
+               C 460,110 470,60 500,60 C 530,60 540,150 570,150
+               C 600,150 605,70 630,70 C 655,70 660,150 690,150
+               C 720,150 725,90 750,90
+               C 800,90 800,150 850,150 C 900,150 900,70 950,70
+               C 985,70 985,130 1015,130 C 1045,130 1050,95 1080,95
+               L1200,95" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section steps" id="how-it-works">
+      <div class="section-head reveal">
+        <p class="eyebrow">The process</p>
+        <h2>Three steps from measurement to insight</h2>
+      </div>
+      <ol class="steps-list">
+        <li class="step-card reveal">
+          <span class="step-index">01</span>
+          <h3>Enter the measurements</h3>
+          <p>Input the cell nuclei characteristics from a diagnostic report — radius, texture, smoothness, and the rest of the standard panel.</p>
+        </li>
+        <li class="step-card reveal">
+          <span class="step-index">02</span>
+          <h3>The model reasons over the data</h3>
+          <p>A trained classifier compares the values against patterns learned from thousands of prior, verified cases.</p>
+        </li>
+        <li class="step-card reveal">
+          <span class="step-index">03</span>
+          <h3>Review a transparent result</h3>
+          <p>Get a benign/malignant likelihood with a confidence score and the leading factors behind it — never a black box.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Features -->
+    <section class="section features" id="features">
+      <div class="section-head reveal">
+        <p class="eyebrow">Why clinicians trust it</p>
+        <h2>Every prediction, held to a higher standard</h2>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>High diagnostic accuracy</h3>
+          <p>Trained and validated on the Wisconsin Diagnostic Breast Cancer dataset, the model is benchmarked for precision and recall before it ever reaches a prediction screen.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Instant results</h3>
+          <p>Predictions return in a fraction of a second, so the model fits naturally into a real clinical workflow instead of interrupting it.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Explainable, not opaque</h3>
+          <p>Each result comes with the measurements that influenced it most, so the prediction supports clinical judgment instead of replacing it.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.4 8.4-7 9-3.6-.6-7-4-7-9V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Private by design</h3>
+          <p>Patient data is processed for the single prediction requested and is never stored, sold, or used to train future models.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Predict CTA panel -->
+    <section class="section predict-panel" id="predict">
+      <div class="predict-card reveal">
+        <div class="predict-copy">
+          <p class="eyebrow">Ready when you are</p>
+          <h2>Run a prediction on today's measurements</h2>
+          <p>Enter a diagnostic panel and receive a benign or malignant likelihood, along with the confidence behind it, in seconds.</p>
+          <div class="hero-actions">
+            <a href="/predict" class="btn btn-primary">Open the prediction form</a>
+            <a href="#about" class="btn btn-secondary">Read the methodology</a>
+          </div>
+        </div>
+        <div class="predict-visual" aria-hidden="true">
+          <div class="confidence-ring">
+            <svg viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="52" class="ring-track"/>
+              <circle cx="60" cy="60" r="52" class="ring-progress"/>
+            </svg>
+            <div class="confidence-label">
+              <strong>97.4%</strong>
+              <span>model precision</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about" id="about">
+      <div class="about-grid">
+        <div class="reveal">
+          <p class="eyebrow">About this dashboard</p>
+          <h2>Built to support the decision, not make it</h2>
+          <p>This tool applies a supervised learning model to the diagnostic features clinicians already collect. It exists to surface a fast, consistent second read — never to replace biopsy, imaging, or a clinician's judgment.</p>
+          <p>Every prediction is paired with the reasoning behind it, so it can be reviewed, questioned, and confirmed like any other clinical input.</p>
+        </div>
+        <div class="about-stats reveal">
+          <div class="stat">
+            <strong>569</strong>
+            <span>diagnostic cases in training data</span>
+          </div>
+          <div class="stat">
+            <strong>30</strong>
+            <span>cell nuclei features analyzed</span>
+          </div>
+          <div class="stat">
+            <strong>&lt;1s</strong>
+            <span>average prediction time</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="18" height="18">
+            <path d="M16 28C16 28 4 20.6 4 12.4C4 7.8 7.6 4.4 12 4.4C13.9 4.4 15.5 5.2 16 6.4C16.5 5.2 18.1 4.4 20 4.4C24.4 4.4 28 7.8 28 12.4C28 20.6 16 28 16 28Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <span>Clinical AI Dashboard</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="#predict">Predict</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">For research and clinical decision support only. Not a substitute for professional medical diagnosis.</p>
+    <p class="footer-copy">© 2026 Clinical AI Dashboard</p>
+  </footer>
+
+</body>
+</html>

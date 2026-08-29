@@ -1,0 +1,30 @@
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+.env/
+venv/
+env/
+
+# Data files (optional: don't push large datasets)
+data/raw/
+data/processed/
+
+# Model files
+*.h5
+*.hdf5
+*.pt
+*.ckpt
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="result-hero">
+  <div class="result-card glass reveal">
+
+    <div class="result-icon-wrap
+      {{ 'result-icon-wrap--benign' if prediction == 'Benign'
+         else 'result-icon-wrap--malignant' if prediction == 'Malignant'
+         else 'result-icon-wrap--neutral' }}">
+      {% if prediction == 'Benign' %}
+      <svg viewBox="0 0 24 24" class="result-icon-svg">
+        <circle cx="12" cy="12" r="10" class="icon-ring"/>
+        <path d="M7 12.5l3.2 3.2L17 9" class="icon-check"/>
+      </svg>
+      {% elif prediction == 'Malignant' %}
+      <svg viewBox="0 0 24 24" class="result-icon-svg">
+        <circle cx="12" cy="12" r="10" class="icon-ring"/>
+        <path d="M12 7.5v6" class="icon-check"/>
+        <circle cx="12" cy="16.3" r="0.9" class="icon-dot"/>
+      </svg>
+      {% else %}
+      <svg viewBox="0 0 24 24" class="result-icon-svg">
+        <circle cx="12" cy="12" r="10" class="icon-ring"/>
+        <path d="M12 8v5" class="icon-check"/>
+        <circle cx="12" cy="15.8" r="0.9" class="icon-dot"/>
+      </svg>
+      {% endif %}
+    </div>
+
+    <p class="eyebrow">Prediction result</p>
+
+    {% if prediction == 'Benign' or prediction == 'Malignant' %}
+      <span class="badge {{ 'badge-benign' if prediction == 'Benign' else 'badge-malignant' }}">
+        {{ prediction }}
+      </span>
+
+      {% if probability is defined and probability %}
+      <div class="result-confidence">
+        <div class="confidence-bar-track">
+          <div class="confidence-bar-fill {{ 'fill-benign' if prediction == 'Benign' else 'fill-malignant' }}"
+               style="--fill-to: {{ probability|replace('%','') }}%;"></div>
+        </div>
+        <span class="confidence-value">{{ probability }} confidence</span>
+      </div>
+      {% endif %}
+
+      <p class="result-summary">
+        {% if prediction == 'Benign' %}
+          The measurements entered are most consistent with a <strong>benign</strong> finding.
+        {% else %}
+          The measurements entered are most consistent with a <strong>malignant</strong> finding.
+        {% endif %}
+      </p>
+    {% else %}
+      <p class="result-summary">{{ prediction }}</p>
+    {% endif %}
+
+    <p class="result-disclaimer">
+      This is a decision-support estimate, not a diagnosis. Always confirm with imaging, biopsy,
+      and the judgment of a licensed clinician.
+    </p>
+
+    <div class="hero-actions result-actions">
+      <a href="/#predict" class="btn btn-primary">Run another prediction</a>
+      <a href="/" class="btn btn-secondary">
+        <span class="back-arrow" aria-hidden="true">←</span> Back to home
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

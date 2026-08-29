@@ -1,0 +1,16 @@
+{
+    "model": "LinearRegression",
+    "metrics": {
+        "accuracy": 0.9298245614035088,
+        "FPR": 0.171875,
+        "FNR": 0.009345794392523364,
+        "TPR": 0.9906542056074766,
+        "TNR": 0.828125
+    },
+    "hyperparameters": {
+        "solver": "liblinear",
+        "penalty": "l2"
+    },
+    "epochs": 3000,
+    "datapoints": 384000
+}

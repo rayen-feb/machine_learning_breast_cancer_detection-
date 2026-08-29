@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-inner">
+      <p class="eyebrow reveal">Clinical decision support, built on machine learning</p>
+      <h1 class="reveal">
+        Read the signal,<br>
+        <span class="text-gradient">not just the noise.</span>
+      </h1>
+      <p class="hero-sub reveal">
+        Enter a diagnostic panel below and get a clear, explainable
+        probability — so a second opinion is always one prediction away.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#predict" class="btn btn-primary">Start a prediction</a>
+        <a href="#demo" class="btn btn-secondary">Watch it in action</a>
+      </div>
+      <p class="hero-disclaimer reveal">Decision support only — always confirmed by a licensed clinician.</p>
+    </div>
+
+    <!-- Animated device mockup -->
+    <div class="hero-visual reveal">
+      <div class="device-mockup tilt-card">
+        <div class="device-notch"></div>
+        <div class="device-screen">
+          <span class="device-label">Live analysis</span>
+          <svg class="device-wave" viewBox="0 0 320 90" preserveAspectRatio="none">
+            <path class="device-wave-path" d="M0,45 L40,45 L52,20 L64,70 L76,25 L88,45 L150,45
+              C 165,45 168,25 180,25 C 195,25 198,60 213,60
+              C 228,60 230,30 245,30 C 260,30 262,60 277,60
+              L320,50" />
+          </svg>
+          <div class="device-readout">
+            <span class="dot dot-benign"></span> Benign likelihood
+            <strong>96.8%</strong>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual-glow" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <!-- Signature animated signal line -->
+  <div class="hero-signal" aria-hidden="true">
+    <svg viewBox="0 0 1200 220" preserveAspectRatio="none">
+      <path class="signal-path"
+        d="M0,110 L140,110 L170,40 L200,180 L230,60 L260,110 L420,110
+           C 460,110 470,60 500,60 C 530,60 540,150 570,150
+           C 600,150 605,70 630,70 C 655,70 660,150 690,150
+           C 720,150 725,90 750,90
+           C 800,90 800,150 850,150 C 900,150 900,70 950,70
+           C 985,70 985,130 1015,130 C 1045,130 1050,95 1080,95
+           L1200,95" />
+    </svg>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="section steps" id="how-it-works">
+  <div class="section-head reveal">
+    <p class="eyebrow">The process</p>
+    <h2>Three steps from measurement to insight</h2>
+  </div>
+  <ol class="steps-list">
+    <li class="step-card reveal">
+      <span class="step-index">01</span>
+      <h3>Enter the measurements</h3>
+      <p>Input the cell nuclei characteristics from a diagnostic report — radius, texture, smoothness, and the rest of the standard panel.</p>
+    </li>
+    <li class="step-card reveal">
+      <span class="step-index">02</span>
+      <h3>The model reasons over the data</h3>
+      <p>A trained classifier compares the values against patterns learned from thousands of prior, verified cases.</p>
+    </li>
+    <li class="step-card reveal">
+      <span class="step-index">03</span>
+      <h3>Review a transparent result</h3>
+      <p>Get a benign/malignant likelihood with a confidence score, never a black box.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- Video demo -->
+<section class="section demo" id="demo">
+  <div class="section-head reveal">
+    <p class="eyebrow">See it in action</p>
+    <h2>Watch a 60-second walkthrough</h2>
+    <p>From entering a diagnostic panel to reading the result — here's the whole flow in one short clip.</p>
+  </div>
+
+  <div class="video-card reveal tilt-card" id="videoCard">
+    <video
+      id="demoVideo"
+      class="video-el"
+      preload="metadata"
+      playsinline
+      controls>
+      <source src="{{ url_for('static', filename='media/demo.mp4') }}" type="video/mp4">
+      Your browser doesn't support embedded video. You can still try the
+      <a href="#predict">prediction form</a> directly.
+    </video>
+    <button class="video-play" id="videoPlayBtn" aria-label="Play demo video" type="button">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7L8 5z" fill="currentColor"/></svg>
+    </button>
+    <div class="video-empty-state" id="videoEmptyState">
+      <svg viewBox="0 0 24 24" class="video-empty-icon"><path d="M8 5v14l11-7L8 5z" fill="currentColor" opacity="0.5"/></svg>
+      <p>Demo video not added yet</p>
+      <span>Drop a file at <code>static/media/demo.mp4</code> and refresh</span>
+    </div>
+  </div>
+  <p class="video-note reveal">This player is already wired up — add your own screen recording at <code>static/media/demo.mp4</code> and it'll appear automatically.</p>
+</section>
+
+<!-- Sample analysis views -->
+<section class="section gallery" id="gallery">
+  <div class="section-head reveal">
+    <p class="eyebrow">Under the hood</p>
+    <h2>What the model is actually looking at</h2>
+  </div>
+  <div class="gallery-grid">
+    <figure class="gallery-card reveal tilt-card">
+      <div class="gallery-visual gallery-visual--benign">
+        <svg viewBox="0 0 200 160"><ellipse cx="70" cy="70" rx="22" ry="18" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="120" cy="55" rx="16" ry="14" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="140" cy="100" rx="19" ry="16" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="80" cy="115" rx="14" ry="12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      </div>
+      <figcaption>
+        <span class="gallery-tag gallery-tag--benign">Regular</span>
+        <h3>Uniform, well-spaced nuclei</h3>
+        <p>Smooth edges and consistent size typically weigh toward a benign reading.</p>
+      </figcaption>
+    </figure>
+    <figure class="gallery-card reveal tilt-card">
+      <div class="gallery-visual gallery-visual--watch">
+        <svg viewBox="0 0 200 160"><ellipse cx="65" cy="65" rx="24" ry="15" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="115" cy="60" rx="19" ry="22" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="135" cy="105" rx="15" ry="19" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="75" cy="110" rx="20" ry="13" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      </div>
+      <figcaption>
+        <span class="gallery-tag gallery-tag--watch">Borderline</span>
+        <h3>Irregular shape, mixed density</h3>
+        <p>Uneven contours nudge the confidence score toward a closer second look.</p>
+      </figcaption>
+    </figure>
+    <figure class="gallery-card reveal tilt-card">
+      <div class="gallery-visual gallery-visual--flag">
+        <svg viewBox="0 0 200 160"><path d="M50,70 C40,50 70,40 80,55 C95,45 115,55 110,75 C130,70 135,95 115,100 C120,120 90,125 85,105 C65,120 45,100 60,85 Z" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="140" cy="60" rx="18" ry="24" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      </div>
+      <figcaption>
+        <span class="gallery-tag gallery-tag--flag">Flagged</span>
+        <h3>Dense clustering, sharp irregularity</h3>
+        <p>Pronounced asymmetry and clustering are patterns the model weighs heavily toward malignant.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Prediction form -->
+<section class="section predict-panel" id="predict">
+  <div class="section-head reveal">
+    <p class="eyebrow">Run a prediction</p>
+    <h2>Enter today's diagnostic panel</h2>
+    <p>These ten measurements come from a standard fine needle aspirate (FNA) report. All fields are required.</p>
+  </div>
+
+  {% if prediction is defined and prediction %}
+  <div class="result-banner {{ 'result-malignant' if prediction == 'Malignant' else 'result-benign' }} reveal">
+    <div class="result-icon" aria-hidden="true">
+      {% if prediction == 'Malignant' %}
+      <svg viewBox="0 0 24 24"><path d="M12 3l9 16H3l9-16z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 10v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17" r="0.9" fill="currentColor"/></svg>
+      {% else %}
+      <svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      {% endif %}
+    </div>
+    <div class="result-text">
+      <h3>Prediction: {{ prediction }}</h3>
+      {% if probability is defined and probability %}
+      <p>Model confidence: <strong>{{ probability }}</strong></p>
+      {% endif %}
+      <p class="result-note">This is a decision-support estimate. Confirm with imaging, biopsy, and clinical judgment.</p>
+    </div>
+  </div>
+  {% endif %}
+
+  <form class="predict-card predict-form" action="/result" method="POST">
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="radius_mean">Radius (mean)</label>
+        <input type="number" step="any" id="radius_mean" name="radius_mean" placeholder="e.g. 14.13" required>
+      </div>
+      <div class="form-field">
+        <label for="texture_mean">Texture (mean)</label>
+        <input type="number" step="any" id="texture_mean" name="texture_mean" placeholder="e.g. 19.29" required>
+      </div>
+      <div class="form-field">
+        <label for="perimeter_mean">Perimeter (mean)</label>
+        <input type="number" step="any" id="perimeter_mean" name="perimeter_mean" placeholder="e.g. 91.97" required>
+      </div>
+      <div class="form-field">
+        <label for="area_mean">Area (mean)</label>
+        <input type="number" step="any" id="area_mean" name="area_mean" placeholder="e.g. 654.9" required>
+      </div>
+      <div class="form-field">
+        <label for="smoothness_mean">Smoothness (mean)</label>
+        <input type="number" step="any" id="smoothness_mean" name="smoothness_mean" placeholder="e.g. 0.096" required>
+      </div>
+      <div class="form-field">
+        <label for="compactness_mean">Compactness (mean)</label>
+        <input type="number" step="any" id="compactness_mean" name="compactness_mean" placeholder="e.g. 0.104" required>
+      </div>
+      <div class="form-field">
+        <label for="concavity_mean">Concavity (mean)</label>
+        <input type="number" step="any" id="concavity_mean" name="concavity_mean" placeholder="e.g. 0.089" required>
+      </div>
+      <div class="form-field">
+        <label for="concave_points_mean">Concave points (mean)</label>
+        <input type="number" step="any" id="concave_points_mean" name="concave_points_mean" placeholder="e.g. 0.048" required>
+      </div>
+      <div class="form-field">
+        <label for="symmetry_mean">Symmetry (mean)</label>
+        <input type="number" step="any" id="symmetry_mean" name="symmetry_mean" placeholder="e.g. 0.181" required>
+      </div>
+      <div class="form-field">
+        <label for="fractal_dimension_mean">Fractal dimension (mean)</label>
+        <input type="number" step="any" id="fractal_dimension_mean" name="fractal_dimension_mean" placeholder="e.g. 0.063" required>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Run prediction</button>
+      <button type="reset" class="btn btn-secondary">Clear fields</button>
+    </div>
+    <p class="hero-disclaimer">Values are typically supplied on a pathology or FNA report. No data entered here is stored.</p>
+  </form>
+</section>
+
+<!-- Features -->
+<section class="section features" id="features">
+  <div class="section-head reveal">
+    <p class="eyebrow">Why clinicians trust it</p>
+    <h2>Every prediction, held to a higher standard</h2>
+  </div>
+  <div class="features-grid">
+    <article class="feature-card reveal">
+      <div class="feature-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>High diagnostic accuracy</h3>
+      <p>Trained and validated on the Wisconsin Diagnostic Breast Cancer dataset, benchmarked for precision and recall before reaching a prediction screen.</p>
+    </article>
+    <article class="feature-card reveal">
+      <div class="feature-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Instant results</h3>
+      <p>Predictions return in a fraction of a second, fitting naturally into a real clinical workflow instead of interrupting it.</p>
+    </article>
+    <article class="feature-card reveal">
+      <div class="feature-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Explainable, not opaque</h3>
+      <p>Each result comes with the confidence behind it, so the prediction supports clinical judgment instead of replacing it.</p>
+    </article>
+    <article class="feature-card reveal">
+      <div class="feature-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.4 8.4-7 9-3.6-.6-7-4-7-9V6l7-3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Private by design</h3>
+      <p>Patient data is processed for the single prediction requested and is never stored, sold, or used to train future models.</p>
+    </article>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section about" id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="eyebrow">About this dashboard</p>
+      <h2>Built to support the decision, not make it</h2>
+      <p>This tool applies a supervised learning model to the diagnostic features clinicians already collect. It exists to surface a fast, consistent second read — never to replace biopsy, imaging, or a clinician's judgment.</p>
+      <p>Every prediction is paired with the reasoning behind it, so it can be reviewed, questioned, and confirmed like any other clinical input.</p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat">
+        <strong>569</strong>
+        <span>diagnostic cases in training data</span>
+      </div>
+      <div class="stat">
+        <strong>30</strong>
+        <span>cell nuclei features analyzed</span>
+      </div>
+      <div class="stat">
+        <strong>&lt;1s</strong>
+        <span>average prediction time</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
